@@ -44,7 +44,7 @@ jobs:
         sudo -E apt -qq purge azure-cli docker* ghc* zulu* hhvm* llvm* firefox google* dotnet* aspnetcore* powershell openjdk* adoptopenjdk* mysql* php* mongodb* moby* snap* || true -y
         sudo -E apt -qq update -y
         sudo -E apt -qq full-upgrade -y
-        sudo -E apt -qq install $(curl -fsSL https://raw.githubusercontent.com/free-diy/openwrt/main/depends_ubuntu_2204) -y
+        sudo -E apt -qq install $(curl -fsSL https://raw.githubusercontent.com/LiuYi0526/openwrt/main/depends_ubuntu_2204) -y
         sudo -E systemctl daemon-reload
         sudo -E apt -qq autoremove --purge -y
         sudo -E apt -qq clean -y
@@ -159,7 +159,7 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
       uses: ncipollo/release-action@v1
       with:
-        name: R${{ env.DATE }} for ${{ env.FIRMWARE_TAG }}
+        name: ${{ env.FIRMWARE_TAG }}
         allowUpdates: true
         tag: ${{ env.FIRMWARE_TAG }}
         token: ${{ secrets.GITHUB_TOKEN }}
@@ -167,6 +167,7 @@ jobs:
         body: |
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
           ### 📒 固件信息
+          - ⌚️ 编译时间：${{ env.DATE }}
           - 💻 平台架构: ${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}
-          - 🌐 默认地址: 192.168.100.252
+          - 🌐 默认地址: 192.168.3.1
           - 🔑 默认密码: 空
