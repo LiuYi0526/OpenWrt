@@ -30,7 +30,7 @@ git clone --depth=1 -b master https://github.com/jerrykuku/luci-app-argon-config
 # 拉取中文版netdata
 #git clone --depth=1 -b master https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
 # 添加Lucky
-git clone --depth=1 -b main https://github.com/sirpdboy/luci-app-lucky.git package/lucky
+git clone --depth=1 -b main https://github.com/gdy666/luci-app-lucky package/lucky
 # 添加系统高级设置
 git clone --depth=1 -b master https://github.com/sirpdboy/luci-app-advanced package/luci-app-advanced
 # 拉取定时设置
@@ -40,8 +40,8 @@ git clone --depth=1 https://github.com/sirpdboy/luci-app-poweroffdevice package/
 # 添加adguardhome,bypass，文件管理助手等
 #luci-app-adguardhome luci-app-homeproxy
 #git_sparse_clone main https://github.com/kenzok8/small-package luci-app-bypass luci-app-fileassistant luci-app-filebrowser luci-app-timecontrol luci-app-control-timewol
-# 添加mihomo
-git clone --depth=1 -b main https://github.com/morytyann/OpenWrt-mihomo package/OpenWrt-mihomo
+# 添加nikki
+git clone --depth=1 -b main https://github.com/nikkinikki-org/OpenWrt-nikki package/OpenWrt-nikki
 # 添加istore
 git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
 git_sparse_clone main https://github.com/linkease/istore luci
