@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # 1. 修改默认 IP
-sed -i '/lan)/s/192\.168\.[0-9.]*/192.168.3.1/' package/base-files/files/bin/config_generate
+sed -i '/lan)/s/192\.168\.[0-9.]*/192.168.100.253/' package/base-files/files/bin/config_generate
 
 # 2.移除要替换的包
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-argon-config
 rm -rf feeds/luci/applications/luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-passwall
-rm -rf feeds/packages/lang/golang
+#rm -rf feeds/packages/lang/golang
 rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
 #rm -rf feeds/luci/applications/luci-app-netdata
 
@@ -86,7 +86,7 @@ function git_sparse_clone() {
 }
 
 # 4. 更新 golang 1.26 版本
-git clone --depth=1 -b 26.x https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+#git clone --depth=1 -b 26.x https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 
 # 5. 主题与常规插件
 # 添加argon主题
@@ -99,11 +99,11 @@ git clone --depth=1 -b main https://github.com/free-diy/luci-app-advancedplus pa
 # 添加nikki
 git clone --depth=1 -b main https://github.com/nikkinikki-org/OpenWrt-nikki package/OpenWrt-nikki
 # 添加Passwall 及其依赖
-git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/passwall-packages
-git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-luci
+#git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/passwall-packages
+#git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-luci
 #git clone --depth=1 -b main https://github.com/Openwrt-Passwall/openwrt-passwall2 package/passwall12-luci
 # 添加ssrplus
-git clone --depth=1 -b master https://github.com/fw876/helloworld.git package/helloworld
+#git clone --depth=1 -b master https://github.com/fw876/helloworld.git package/helloworld
 # 添加中文版netdata
 #git clone --depth=1 -b master https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
 # 添加应用管理
@@ -111,7 +111,7 @@ git clone --depth=1 -b master https://github.com/fw876/helloworld.git package/he
 # 添加momo
 #git clone --depth=1 -b main https://github.com/nikkinikki-org/OpenWrt-momo package/OpenWrt-momo
 # 添加壁虎合集
-#git clone --depth=1 -b main https://github.com/free-diy/all-proxy package/all-proxy
+git clone --depth=1 -b main https://github.com/free-diy/all-proxy package/all-proxy
 
 # 6. 定制插件克隆 (iStore 特殊处理)
 # 添加openclash
@@ -121,10 +121,10 @@ git_sparse_clone main https://github.com/sirpdboy/luci-app-taskplan luci-app-tas
 # 添加设备关机功能
 git_sparse_clone master https://github.com/sirpdboy/luci-app-poweroffdevice luci-app-poweroffdevice
 # 添加istore
-git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
-git_sparse_clone main https://github.com/linkease/istore luci
+#git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
+#git_sparse_clone main https://github.com/linkease/istore luci
 # 特别注意：iStore 的目录在仓库里叫 luci，移动到 package 后我们给它改个名防止冲突
-[ -d package/luci ] && mv package/luci package/luci-app-istore
+#[ -d package/luci ] && mv package/luci package/luci-app-istore
 
 # 添加rtp2httpd
 #git_sparse_clone https://github.com/stackia/rtp2httpd/tree/main/openwrt-support/luci-app-rtp2httpd
